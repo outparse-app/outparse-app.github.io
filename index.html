@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outparse Web App - Coming Soon</title>
+<meta name="author" content="Gbemisola Oyeniyi">
+<meta name="theme-color" content="##111b9d">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--primary-color: #024ff9;
+--text-color: #333;
+--light-text: #666;
+--transition-speed: 0.3s;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: 'Noto Sans', sans-serif;
+background-color: white;
+color: var(--text-color);
+line-height: 1.6;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+padding: 1rem;
+text-align: center;
+}
+.container {
+max-width: 800px;
+margin: auto;
+width: 100%;
+padding: 0 1rem;
+}
+.icon {
+width: 80px;
+height: 80px;
+margin: 0 auto 1.5rem;
+object-fit: contain;
+}
+.pre-heading {
+font-size: 0.75rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--light-text);
+margin-bottom: 0.5rem;
+font-weight: 600;
+}
+h1 {
+color: var(--primary-color);
+text-transform: uppercase;
+letter-spacing: 0.25em;
+font-size: 2.5rem;
+margin-bottom: 1.5rem;
+line-height: 1.2;
+font-weight: 700;
+}
+p {
+margin-bottom: 2rem;
+color: var(--light-text);
+font-size: 1.125rem;
+}
+.cta-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background-color: var(--primary-color);
+color: white;
+padding: 0.75rem 1.5rem;
+border-radius: 4px;
+text-decoration: none;
+font-weight: 600;
+transition: all var(--transition-speed) ease;
+border: 2px solid var(--primary-color);
+}
+.cta-button:hover {
+background-color: transparent;
+color: var(--primary-color);
+transform: translateY(-2px);
+}
+.cta-button svg {
+margin-left: 0.5rem;
+width: 16px;
+height: 16px;
+fill: currentColor;
+}
+@media (max-width: 480px) {
+h1 {
+font-size: 2rem;
+}
+p {
+font-size: 1rem;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<img src="/assets/images/planet-saturn.svg" alt="Saturn icon" class="icon">
+<p class="pre-heading">Outparse web app is</p>
+<h1>Coming Soon</h1>
+<p>In the meantime, enjoy full access as a guest and explore an array of awesome features.</p>
+<a href="https://outparse.github.io/app/index.html" class="cta-button">
+Try as Guest
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+</svg>
+</a>
+</div>
+</body>
+</html>
