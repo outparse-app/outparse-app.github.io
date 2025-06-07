@@ -1,0 +1,39 @@
+{
+"version": 2,
+"builds": [
+{
+"src": "*.html",
+"use": "@vercel/static"
+},
+{
+"src": "js/*.js",
+"use": "@vercel/static"
+},
+{
+"src": "styles.css",
+"use": "@vercel/static"
+}
+],
+"routes": [
+{
+"src": "/",
+"dest": "/index.html"
+},
+{
+"src": "/verify-email",
+"dest": "/verify-email.html"
+},
+{
+"src": "/js/(.*)",
+"dest": "/js/$1"
+},
+{
+"src": "/assets/(.*)",
+"dest": "/assets/$1"
+},
+{
+"src": "/styles.css",
+"dest": "/styles.css"
+}
+]
+}
