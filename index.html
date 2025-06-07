@@ -5,8 +5,179 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Outparse - Free Proofreading Tool | Check Spelling, Grammar & Tone</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.ico">
-<link rel="stylesheet" href="styles.css"
+<style>
+:root {
+--primary-color: #2563eb;
+--gradient: linear-gradient(
+to bottom right,
+rgba(230, 240, 255, 1) 0%,
+rgba(187, 215, 252, 1) 40%,
+rgba(137, 181, 250, 0.9) 70%,
+rgba(77, 141, 245, 0.95) 85%,
+rgba(37, 99, 235, 1) 100%
+);
+--text-color: #1f2937;
+--white: #ffffff;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Noto Sans', sans-serif;
+}
+body {
+background-color: #f8f9fa;
+color: #212529;
+line-height: 1.6;
+min-height: 100vh;
+}
+.container {
+display: flex;
+flex-wrap: wrap;
+min-height: 100vh;
+}
+.left-column {
+flex: 1;
+min-width: 300px;
+padding: 40px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.right-column {
+flex: 1;
+min-width: 300px;
+background: var(--gradient);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 40px;
+}
+.logo-container {
+text-align: center;
+}
+.logo-container img {
+max-width: 180px;
+height: auto;
+}
+.content {
+max-width: 480px;
+width: 100%;
+margin: 0 auto;
+}
+h1 {
+color: #333;
+font-size: 28px;
+margin-bottom: 16px;
+font-weight: 600;
+text-align: left;
+}
+p {
+color: #5f6368;
+margin-bottom: 30px;
+font-size: 16px;
+line-height: 1.5;
+text-align: left;
+}
+.form-group {
+margin-bottom: 24px;
+}
+.label-wrapper {
+display: flex;
+align-items: center;
+margin-bottom: 8px;
+}
+.label {
+font-weight: 500;
+color: #3c4043;
+font-size: 15px;
+display: flex;
+align-items: center;
+}
+.label svg {
+margin-right: 10px;
+fill: #5f6368;
+}
+.password-label {
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+.password-toggle {
+cursor: pointer;
+display: flex;
+align-items: center;
+}
+.password-toggle svg {
+width: 20px;
+height: 20px;
+fill: #5f6368;
+}
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+width: 100%;
+padding: 14px 16px;
+border: 1px solid #dadce0;
+border-radius: 6px;
+font-size: 16px;
+transition: all 0.3s;
+}
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+border-color: #1a73e8;
+outline: none;
+box-shadow: 0 0 0 3px rgba(26,115,232,0.1);
+}
+button {
+background-color: #1a73e8;
+color: white;
+border: none;
+border-radius: 6px;
+padding: 14px 24px;
+font-size: 16px;
+font-weight: 500;
+cursor: pointer;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s;
+margin-top: 10px;
+}
+button:hover {
+background-color: #1765cc;
+transform: translateY(-1px);
+box-shadow: 0 2px 8px rgba(26,115,232,0.3);
+}
+button svg {
+margin-left: 10px;
+fill: white;
+}
+@media (max-width: 768px) {
+.left-column, .right-column {
+flex: 100%;
+min-height: auto;
+order: 2;
+}
+.right-column {
+padding: 60px 40px;
+order: 1;
+}
+.content {
+max-width: 100%;
+}
+}
+@media (max-width: 480px) {
+.left-column {
+padding: 30px 20px;
+}
+h1 {
+font-size: 24px;
+}
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -16,47 +187,53 @@
 <p>We'll check if you have an account, and help create one if you don't.</p>
 <form id="signupForm">
 <div class="form-group">
-<div class="label">
+<div class="label-wrapper">
+<span class="label">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
 <path d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"/>
 </svg>
-<span>Full Name</span>
+Full Name
+</span>
 </div>
 <input type="text" id="fullName" placeholder="Enter your full name" required>
 </div>
 <div class="form-group">
-<div class="label">
+<div class="label-wrapper">
+<span class="label">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="#5f6368" stroke-width="2"/>
 <path d="M22 6l-10 7L2 6" fill="none" stroke="#5f6368" stroke-width="2"/>
 </svg>
-<span>Email address</span>
+Email address
+</span>
 </div>
 <input type="email" id="email" placeholder="Enter your email address" required>
 </div>
 <div class="form-group">
-<div class="label">
+<div class="label-wrapper">
+<div class="password-label">
+<span class="label">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
 <path d="M19 10v-4c0-3.313-2.687-6-6-6s-6 2.687-6 6v4h-3v14h18v-14h-3zm-9-4c0-1.654 1.346-3 3-3s3 1.346 3 3v4h-6v-4zm11 16h-14v-10h14v10z"/>
 </svg>
-<span>Create Password</span>
-</div>
-<input type="password" id="password" placeholder="Create a password (min 8 characters)" required minlength="8">
+Create Password
+</span>
 <span class="password-toggle" onclick="togglePassword()">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" id="toggle-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="toggle-icon">
 <path d="M12 9c1.654 0 3 1.346 3 3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3zm0-2c-2.762 0-5 2.239-5 5s2.238 5 5 5 5-2.239 5-5-2.238-5-5-5zm11 5c0 4.418-8 11-11 11s-11-6.582-11-11 8-11 11-11 11 6.582 11 11z"/>
 </svg>
 </span>
 </div>
-<div id="error-message" class="error-message"></div>
-<button type="submit" id="submitBtn">
+</div>
+<input type="password" id="password" placeholder="Create a password" required>
+</div>
+<button type="submit">
 Continue
 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
 <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>
 </svg>
 </button>
 </form>
-<p class="login-link">Already have an account? <a href="/login">Log in</a></p>
 </div>
 </div>
 <div class="right-column">
@@ -65,6 +242,66 @@ Continue
 </div>
 </div>
 </div>
-<script src="/js/app.js" type="module"></script>
+<!-- Load Firebase SDK at the end of body -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script>
+// Password toggle function
+function togglePassword() {
+const passwordField = document.getElementById('password');
+const toggleIcon = document.getElementById('toggle-icon');
+if (passwordField.type === 'password') {
+passwordField.type = 'text';
+toggleIcon.innerHTML = '<path d="M11.885 14.988l3.104-3.098.011.11c0 1.654-1.346 3-3 3l-.115-.012zm8.048-8.032l-3.274 3.268c.212.554.341 1.149.341 1.776 0 2.757-2.243 5-5 5-.631 0-1.229-.13-1.785-.344l-2.377 2.372c1.276.588 2.671.972 4.177.972 7.733 0 11.985-8.449 11.985-8.449s-1.415-2.478-4.067-4.595zm1.431-3.536l-18.619 18.58-1.382-1.422 3.455-3.447c-3.022-2.45-4.818-5.58-4.818-5.58s4.446-7.551 12.015-7.551c1.825 0 3.456.426 4.886 1.075l3.081-3.075 1.382 1.42zm-13.751 10.922l1.519-1.515c-.077-.264-.132-.538-.132-.827 0-1.654 1.346-3 3-3 .291 0 .567.055.833.134l1.518-1.515c-.704-.382-1.496-.619-2.351-.619-2.757 0-5 2.243-5 5 0 .852.235 1.641.613 2.342z"/>';
+} else {
+passwordField.type = 'password';
+toggleIcon.innerHTML = '<path d="M12 9c1.654 0 3 1.346 3 3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3zm0-2c-2.762 0-5 2.239-5 5s2.238 5 5 5 5-2.239 5-5-2.238-5-5-5zm11 5c0 4.418-8 11-11 11s-11-6.582-11-11 8-11 11-11 11 6.582 11 11z"/>';
+}
+}
+
+// Initialize Firebase with environment variables
+document.addEventListener('DOMContentLoaded', () => {
+const firebaseConfig = {
+apiKey: process.env.FIREBASE_API_KEY,
+authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+projectId: process.env.FIREBASE_PROJECT_ID,
+storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+appId: process.env.FIREBASE_APP_ID
+};
+
+if (Object.values(firebaseConfig).every(value => value)) {
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+document.getElementById('signupForm').addEventListener('submit', (e) => {
+e.preventDefault();
+const email = document.getElementById('email').value;
+const password = document.getElementById('password').value;
+const fullName = document.getElementById('fullName').value;
+
+auth.createUserWithEmailAndPassword(email, password)
+.then((userCredential) => {
+return db.collection('users').doc(userCredential.user.uid).set({
+fullName: fullName,
+email: email,
+createdAt: firebase.firestore.FieldValue.serverTimestamp()
+});
+})
+.then(() => {
+alert('Account created successfully!');
+})
+.catch((error) => {
+console.error('Error:', error);
+alert(error.message);
+});
+});
+} else {
+console.warn('Firebase environment variables not set');
+}
+});
+</script>
 </body>
 </html>
