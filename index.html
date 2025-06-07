@@ -8,6 +8,7 @@
 <style>
 :root {
 --primary-color: #2563eb;
+--success-color: #10b981;
 --gradient: linear-gradient(
 to bottom right,
 rgba(230, 240, 255, 1) 0%,
@@ -222,6 +223,9 @@ cursor: not-allowed;
 transform: none;
 box-shadow: none;
 }
+button.success {
+background-color: var(--success-color);
+}
 button svg {
 margin-left: 10px;
 fill: white;
@@ -315,11 +319,11 @@ font-size: 24px;
 <div class="checkbox-group">
 <div class="checkbox-container">
 <input type="checkbox" id="termsCheckbox" required>
-<label for="termsCheckbox">I accept the <a href="https://outparse.com/terms.html" target="_blank">Terms of Use</a> and <a href="https://outparse.com/privacy.html" target="_blank">Privacy Policy</a> <span style="color:var(--error-color)">*</span></label>
+<label for="termsCheckbox">I accept the <a href="https://outparse.com/terms.html" target="_blank">Terms of Use</a> and <a href="https://outparse.com/privacy.html" target="_blank">Privacy Policy</a></label>
 </div>
 <div class="checkbox-container">
 <input type="checkbox" id="marketingCheckbox">
-<label for="marketingCheckbox">I'd like to receive product updates and marketing emails</label>
+<label for="marketingCheckbox">I'd like to receive product updates and marketing emails <em>(optional)</em></label>
 </div>
 <div class="error-message" id="termsError">You must accept the Terms and Privacy Policy</div>
 </div>
@@ -382,7 +386,10 @@ validateForm();
 fullNameInput.addEventListener('input', validateName);
 emailInput.addEventListener('input', validateEmail);
 passwordInput.addEventListener('input', validatePassword);
-termsCheckbox.addEventListener('change', validateForm);
+termsCheckbox.addEventListener('change', function() {
+document.getElementById('termsError').style.display = this.checked ? 'none' : 'block';
+validateForm();
+});
 
 function validateName() {
 const nameRegex = /^[a-zA-Z\s]*$/;
@@ -474,22 +481,31 @@ headers: {
 body: JSON.stringify(data)
 })
 .then(() => {
-alert('Account created successfully!');
-form.reset();
+// Show success state
+buttonText.textContent = 'Successful';
+buttonSpinner.style.display = 'none';
+buttonIcon.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>';
+submitBtn.classList.add('success');
 submitBtn.disabled = true;
 })
 .catch(error => {
 console.error('Error:', error);
 alert('There was an error. Please try again.');
-})
-.finally(() => {
 // Reset button state
 buttonText.textContent = 'Proceed';
 buttonSpinner.style.display = 'none';
 buttonIcon.style.display = 'inline-block';
+buttonIcon.innerHTML = '<path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>';
 submitBtn.disabled = false;
 });
 }
+
+// Validate form on all input changes
+document.querySelectorAll('input').forEach(input => {
+input.addEventListener('input', function() {
+validateForm();
+});
+});
 </script>
 </body>
 </html>
